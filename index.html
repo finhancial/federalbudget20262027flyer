@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Budget 2026-2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #AF231C;
+    --red-bg: #FDF2F2;
+    --red-border: rgba(175,35,28,0.15);
+    --cream: #FAF8F4;
+    --dark: #1A1210;
+    --muted: #7A6360;
+    --gold: #C9974A;
+    --gold-lt: #FDF3E3;
+    --green: #2D6A4F;
+    --green-bg: #F2F8F5;
+    --green-border: rgba(45,106,79,0.15);
+    --blue: #1A4B7A;
+    --blue-bg: #F2F6FB;
+    --blue-border: rgba(26,75,122,0.15);
+    --amber: #B96A1A;
+    --sh: 0 3px 18px rgba(26,18,16,0.09);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--cream); font-family: 'DM Sans', sans-serif; color: var(--dark); font-size: 14.5px; line-height: 1.65; }
+
+  /* HEADER */
+  .hdr { background: var(--red); color: white; position: relative; overflow: hidden; }
+  .hdr::before { content: ''; position: absolute; top: -80px; right: -80px; width: 380px; height: 380px; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .hdr::after { content: ''; position: absolute; bottom: -100px; left: 25%; width: 500px; height: 300px; border-radius: 50%; background: rgba(0,0,0,0.07); }
+  .hdr-inner { max-width: 900px; margin: 0 auto; padding: 46px 44px 38px; position: relative; z-index: 1; }
+  .hdr-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+  .hdr-notadvice { font-size: 10.5px; color: rgba(255,255,255,0.5); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.25); padding: 5px 12px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 4px; }
+  .hdr-eye { font-size: 10.5px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 11px; }
+  .hdr-title { font-family: 'Playfair Display', serif; font-size: 50px; font-weight: 900; line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 8px; }
+  .hdr-title span { color: rgba(255,255,255,0.65); }
+  .hdr-sub { font-size: 15px; color: rgba(255,255,255,0.78); font-weight: 300; max-width: 520px; margin-bottom: 22px; font-style: italic; }
+  .hdr-stamp { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.22); border-radius: 6px; padding: 7px 16px; font-family: 'DM Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.88); letter-spacing: 0.02em; width: fit-content; }
+
+  /* INTRO */
+  .intro { background: var(--dark); color: white; max-width: 900px; margin: 0 auto; border-radius: 0 0 14px 14px; padding: 15px 28px; font-size: 13.5px; line-height: 1.55; display: flex; gap: 14px; align-items: center; }
+  .intro-ico { font-size: 20px; flex-shrink: 0; }
+  .intro strong { color: #f0c060; }
+  .intro-src { font-size: 11px; color: rgba(255,255,255,0.38); margin-top: 4px; }
+
+  /* MAIN */
+  .main { max-width: 900px; margin: 0 auto; padding: 0 44px 60px; }
+
+  /* STATS */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin: 28px 0; }
+  .stat { background: white; border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid rgba(0,0,0,0.07); box-shadow: var(--sh); }
+  .stat-n { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 900; color: var(--red); line-height: 1.1; }
+  .stat-l { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+
+  /* PACKAGE WRAPPER — gives each section a tinted background */
+  .pkg {
+    border-radius: 18px;
+    padding: 26px 28px 28px;
+    margin-bottom: 32px;
+  }
+  .pkg-red { background: var(--red-bg); border: 1.5px solid var(--red-border); }
+  .pkg-green { background: var(--green-bg); border: 1.5px solid var(--green-border); }
+  .pkg-blue { background: var(--blue-bg); border: 1.5px solid var(--blue-border); }
+
+  /* SECTION HEADER inside package */
+  .sec-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .sec-ico { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+  .ico-r { background: var(--red); }
+  .ico-g { background: var(--green); }
+  .ico-b { background: var(--blue); }
+  .ico-go { background: var(--gold); }
+  .sec-lbl { font-size: 10.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .sec-ttl { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; line-height: 1.2; }
+  .sec-div { height: 3px; border-radius: 2px; margin-bottom: 20px; }
+  .div-r { background: linear-gradient(90deg, var(--red), transparent); }
+  .div-g { background: linear-gradient(90deg, var(--green), transparent); }
+  .div-b { background: linear-gradient(90deg, var(--blue), transparent); }
+  .div-go { background: linear-gradient(90deg, var(--gold), transparent); }
+
+  /* GRID */
+  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .g1 { display: grid; gap: 14px; }
+  .span2 { grid-column: 1 / -1; }
+
+  /* CARD — now uses package tint as base; white only for accent areas */
+  .card { background: white; border-radius: 14px; padding: 20px 22px; border: 1px solid rgba(0,0,0,0.07); box-shadow: var(--sh); position: relative; overflow: hidden; }
+  /* Tinted cards for package sections */
+  .pkg-red .card { background: rgba(255,255,255,0.72); border-color: rgba(175,35,28,0.12); }
+  .pkg-green .card { background: rgba(255,255,255,0.72); border-color: rgba(45,106,79,0.12); }
+  .pkg-blue .card { background: rgba(255,255,255,0.72); border-color: rgba(26,75,122,0.12); }
+
+  .card-bar { position: absolute; top: 0; left: 0; width: 4px; height: 100%; border-radius: 4px 0 0 4px; }
+  .bar-r { background: var(--red); }
+  .bar-g { background: var(--green); }
+  .bar-b { background: var(--blue); }
+  .bar-go { background: var(--gold); }
+  .bar-am { background: var(--amber); }
+
+  .ctag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 9px; border-radius: 20px; margin-bottom: 9px; color: white; }
+  .tag-r { background: var(--red); }
+  .tag-g { background: var(--green); }
+  .tag-b { background: var(--blue); }
+  .tag-go { background: var(--gold); }
+  .tag-am { background: var(--amber); }
+
+  .ctit { font-weight: 700; font-size: 15px; margin-bottom: 7px; }
+  .cbod { font-size: 13.5px; color: #3a3030; line-height: 1.65; }
+  .mt8 { margin-top: 8px; }
+  .mt12 { margin-top: 12px; }
+
+  /* CHECKLIST */
+  ul.cl { list-style: none; padding: 0; margin-top: 8px; }
+  ul.cl li { padding: 4px 0 4px 24px; position: relative; font-size: 13.5px; color: #3a3030; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  ul.cl li:last-child { border-bottom: none; }
+  ul.cl li::before { position: absolute; left: 0; font-size: 13px; top: 5px; }
+  ul.cl li.yes::before { content: '\2713'; color: var(--green); font-weight: 700; }
+  ul.cl li.no::before { content: '\2717'; color: var(--red); font-weight: 700; }
+  ul.cl li.dot::before { content: '\2022'; color: var(--muted); }
+
+  /* EXAMPLE BOX — always gold tint */
+  .ex { border-radius: 10px; padding: 14px 16px; margin-top: 13px; border: 1.5px dashed var(--gold); background: var(--gold-lt); }
+  .ex-tt { font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; color: #9a7030; }
+  .ex table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 4px; }
+  .ex td { padding: 4px 6px; border-bottom: 1px solid rgba(201,151,74,0.25); vertical-align: top; }
+  .ex td.val { text-align: right; font-weight: 600; font-family: 'DM Mono', monospace; font-size: 12.5px; }
+  .ex tr.tot td { font-weight: 700; color: var(--red); border-top: 2px solid var(--gold); border-bottom: none; }
+  .ex-note { font-size: 11.5px; color: var(--muted); margin-top: 9px; font-style: italic; line-height: 1.5; }
+
+  /* HIGHLIGHT BOX */
+  .hl { background: rgba(175,35,28,0.06); border: 1.5px solid rgba(175,35,28,0.18); border-radius: 10px; padding: 13px 16px; margin-top: 12px; }
+  .hl-tt { font-weight: 700; color: var(--red); font-size: 12.5px; margin-bottom: 6px; }
+
+  /* SAVINGS DARK */
+  .sav { background: var(--dark); border-radius: 14px; color: white; padding: 24px 28px; margin-bottom: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .sav-tt { font-weight: 700; font-size: 14px; margin-bottom: 5px; }
+  .sav-bod { font-size: 13px; color: rgba(255,255,255,0.68); line-height: 1.55; }
+
+  /* TIMELINE TABLE */
+  .tltab { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .tltab thead tr { background: rgba(26,75,122,0.08); }
+  .tltab th { text-align: left; padding: 10px 13px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); }
+  .tltab tbody tr { border-bottom: 1px solid rgba(26,75,122,0.1); }
+  .tltab tbody tr:last-child { border-bottom: none; }
+  .tltab td { padding: 10px 13px; vertical-align: top; }
+  .tltab td.dt { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--blue); font-weight: 600; white-space: nowrap; }
+
+  /* KEY DATES SECTION */
+  .sec-dates { margin-bottom: 32px; }
+
+  /* DISCLAIMER */
+  .disc { background: #F2EFEB; border-left: 4px solid var(--muted); border-radius: 0 10px 10px 0; padding: 20px 24px; margin-top: 10px; font-size: 13px; color: var(--muted); line-height: 1.75; }
+  .disc strong { color: var(--dark); }
+  .disc-badge { display: inline-block; background: var(--red); color: white; font-weight: 700; font-size: 14px; padding: 5px 14px; border-radius: 5px; margin-bottom: 12px; letter-spacing: 0.05em; }
+
+  /* FOOTER */
+  .ftr { background: var(--red); color: rgba(255,255,255,0.65); text-align: center; padding: 22px 44px; font-size: 12px; line-height: 1.8; }
+  .ftr strong { color: white; }
+  .ftr-badge { display: block; font-size: 17px; font-weight: 700; color: white; margin-bottom: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  @media (max-width: 660px) {
+    .hdr-inner { padding: 28px 20px 22px; }
+    .hdr-title { font-size: 34px; }
+    .main { padding: 0 18px 40px; }
+    .g2 { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .sav { grid-template-columns: 1fr; }
+    .hdr-top { flex-direction: column; gap: 10px; }
+    .pkg { padding: 18px 16px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-top">
+      <div>
+        <div class="hdr-eye">Internal Information Brief</div>
+        <div class="hdr-title">Federal Budget<br><span>2026-2027</span></div>
+        <div class="hdr-sub">A plain-English summary of the key proposed changes announced in the 2026-2027 Federal Budget.</div>
+        <div class="hdr-stamp">&#128197;&nbsp; Delivered 7:30pm AEST &nbsp;|&nbsp; Tuesday 12 May 2026 &nbsp;|&nbsp; Treasurer Jim Chalmers</div>
+      </div>
+      <div class="hdr-notadvice">Not Financial Advice</div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <span class="intro-ico">&#128203;</span>
+  <div>
+    <span>Three packages: <strong>Tax Reform</strong>, <strong>Productivity</strong>, and <strong>Savings</strong>. Significant proposed reforms to investment taxation (CGT, Negative Gearing, Trusts) alongside targeted relief for workers and small businesses.</span>
+    <div class="intro-src">Sources: Australian Government Budget Papers 2026-2027 (budget.gov.au) &nbsp;|&nbsp; ATO (ato.gov.au) &nbsp;|&nbsp; CPA Australia &nbsp;|&nbsp; CA ANZ &nbsp;|&nbsp; Budget Factsheets 12 May 2026</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-n">$250</div>
+      <div class="stat-l">Proposed annual tax offset for 13.3 million workers from 2027-2028</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">$37.8B</div>
+      <div class="stat-l">NDIS savings over the next 4 years</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">$31.5B</div>
+      <div class="stat-l">Forecast deficit for 2026-2027</div>
+    </div>
+  </div>
+
+  <!-- =====================
+       PACKAGE 1: TAX REFORM (RED)
+  ===================== -->
+  <div class="pkg pkg-red">
+
+    <div class="sec-hd">
+      <div class="sec-ico ico-r">&#128184;</div>
+      <div>
+        <div class="sec-lbl">Package 1</div>
+        <div class="sec-ttl">Tax Reform</div>
+      </div>
+    </div>
+    <div class="sec-div div-r"></div>
+
+    <div class="g1">
+
+      <!-- CGT WIDE -->
+      <div class="card span2">
+        <div class="card-bar bar-r"></div>
+        <div class="ctag tag-r">Capital Gains Tax &nbsp;|&nbsp; Proposed from 1 July 2027</div>
+        <div class="ctit">CGT Reform: Indexation Replaces the 50% Discount</div>
+        <div class="cbod">
+          <p>Currently, assets held 12+ months get a 50% CGT discount. From 1 July 2027, this is proposed to be replaced with <strong>CPI-based cost base indexation</strong>, meaning you only pay tax on the gain above inflation. A <strong>30% minimum tax rate</strong> on net capital gains is also proposed.</p>
+
+          <p class="mt8"><strong>Proposed to cover all asset classes:</strong> shares, property, business assets and pre-1985 assets held by individuals, trusts and partnerships. Only gains accruing from 1 July 2027 are affected.</p>
+
+          <ul class="cl">
+            <li class="yes">New residential builds: choice of 50% discount or new indexation method on sale</li>
+            <li class="yes">Main residence: CGT exemption fully retained</li>
+            <li class="yes">Four small business CGT concessions: retained and unchanged</li>
+            <li class="yes">Qualifying affordable housing: existing 60% CGT discount retained</li>
+            <li class="yes">Income support recipients (Age Pension, JobSeeker): proposed to be exempt from the 30% minimum tax</li>
+            <li class="yes">Super funds including SMSFs: retain existing one-third discount, not affected</li>
+          </ul>
+
+          <div class="hl mt12">
+            <div class="hl-tt">Key Notes on Cost Base</div>
+            <ul class="cl">
+              <li class="dot">All pre-existing assets may require a market revaluation as at 1 July 2027, subject to draft legislation and subsequent ATO guidance, either by independent valuation or an ATO apportionment formula.</li>
+              <li class="dot">Renovations and capital improvements: each capital improvement is its own cost base element, indexed from its own expenditure date. Keep all invoices and receipts.</li>
+            </ul>
+          </div>
+
+          <!-- PROPERTY EXAMPLE -->
+          <div class="ex mt12">
+            <div class="ex-tt">Example: Property with Renovation</div>
+            <p style="font-size:13px; margin-bottom:8px;">Sam buys an investment property on 1 July 2027 for <strong>$500,000</strong>. In 2030, Sam spends <strong>$100,000</strong> on a renovation. Sam sells on 1 July 2035 for <strong>$900,000</strong>. Assumed CPI factor: purchase to sale = <strong>1.20</strong>; renovation to sale = <strong>1.15</strong>.</p>
+            <table>
+              <tr><td>Purchase price</td><td class="val">$500,000</td></tr>
+              <tr><td>Indexed purchase cost (x 1.20)</td><td class="val">$600,000</td></tr>
+              <tr><td>Renovation cost</td><td class="val">$100,000</td></tr>
+              <tr><td>Indexed renovation cost (x 1.15)</td><td class="val">$115,000</td></tr>
+              <tr><td>Total indexed cost base</td><td class="val">$715,000</td></tr>
+              <tr><td>Sale proceeds</td><td class="val">$900,000</td></tr>
+              <tr class="tot"><td>Taxable gain (real gain only)</td><td class="val">$185,000</td></tr>
+            </table>
+            <p class="ex-note">At a 47% marginal rate, tax is approx. $86,950. The 30% minimum floor ($55,500) is already exceeded. Without indexation (old 50% discount), taxable gain would have been $150,000.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2-COL ROW -->
+      <div class="g2">
+
+        <!-- NEGATIVE GEARING -->
+        <div class="card">
+          <div class="card-bar bar-r"></div>
+          <div class="ctag tag-r">Negative Gearing &nbsp;|&nbsp; Proposed from 1 July 2027</div>
+          <div class="ctit">Negative Gearing: Restricted to New Builds</div>
+          <div class="cbod">
+            <p>From 1 July 2027, negative gearing against salary or other non-property income would generally be limited to new builds only.</p>
+            <p class="mt8">Losses from affected established residential properties could only offset residential property income, including future capital gains, with unused losses carried forward.</p>
+
+            <div class="hl mt8">
+              <div class="hl-tt">Transitional Arrangements (Announced 12 May 2026)</div>
+              <ul class="cl">
+                <li class="yes"><strong>Held at or under contract at 7:30pm AEST 12 May 2026:</strong> fully grandfathered, current rules apply until sold</li>
+                <li class="yes"><strong>Contracted after 7:30pm AEST 12 May 2026 and before 1 July 2027:</strong> may negatively gear during that period only</li>
+                <li class="no"><strong>Contracted from 1 July 2027:</strong> losses cannot offset other taxable income</li>
+                <li class="yes">New builds (all dates): full negative gearing retained</li>
+                <li class="yes">Commercial property and shares: not affected</li>
+                <li class="yes">Widely held trusts and super funds (incl. SMSFs): excluded</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- WATO + $1K -->
+        <div style="display:flex; flex-direction:column; gap:14px;">
+
+          <div class="card" style="flex:1;">
+            <div class="card-bar bar-r"></div>
+            <div class="ctag tag-r">Workers &nbsp;|&nbsp; Proposed from 2027-2028</div>
+            <div class="ctit">$250 Working Australians Tax Offset (WATO)</div>
+            <div class="cbod">
+              <p>Over <strong>13.3 million</strong> Australian workers are proposed to receive a new <strong>$250 annual tax offset</strong> from the 2027-2028 income year, reducing tax payable.</p>
+              <p class="mt8">Combined with previously legislated tax cuts, workers on average earnings may see up to <strong>$2,816 per year</strong> in total tax reduction across all five measures.</p>
+            </div>
+          </div>
+
+          <div class="card" style="flex:1;">
+            <div class="card-bar bar-r"></div>
+            <div class="ctag tag-r">Workers &nbsp;|&nbsp; Proposed from 2026-2027</div>
+            <div class="ctit">$1,000 Instant Work-Related Expense Deduction</div>
+            <div class="cbod">
+              <p>Workers are proposed to be able to claim a standard <strong>$1,000 deduction</strong> for work-related expenses without itemising or retaining receipts.</p>
+              <p class="mt8">Expected to benefit <strong>6.2 million workers</strong> with an average tax saving of approximately $205.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TRUSTS WIDE -->
+      <div class="card span2">
+        <div class="card-bar bar-r"></div>
+        <div class="ctag tag-r">Discretionary Trusts &nbsp;|&nbsp; Proposed from 1 July 2028</div>
+        <div class="ctit">30% Minimum Tax on Discretionary Trust Distributions</div>
+        <div class="cbod">
+          <p>From 1 July 2028, the <strong>trustee</strong> is proposed to pay a <strong>minimum 30% tax</strong> on the trust's total taxable income. Beneficiaries (other than corporate beneficiaries) would receive <strong>non-refundable credits</strong> for the tax the trustee has paid.</p>
+
+          <div class="g2 mt12">
+            <div>
+              <p style="font-size:13px; font-weight:700; margin-bottom:7px;">Proposed exemptions (with some exceptions, including but not limited to)</p>
+              <ul class="cl">
+                <li class="yes">Primary production (farming) income</li>
+                <li class="yes">Fixed and widely held trusts</li>
+                <li class="yes">Super funds, special disability trusts, deceased estates, charitable trusts</li>
+                <li class="yes">Testamentary trusts (income from assets existing at announcement date)</li>
+              </ul>
+
+              <p style="font-size:13px; font-weight:700; margin-bottom:5px; margin-top:13px;">Bucket companies</p>
+              <p style="font-size:13px; color:#3a3030;">Corporate beneficiaries (bucket companies) would not receive credits for trustee-level tax, removing the ability to convert those into refundable franking credits.</p>
+
+              <p style="font-size:13px; font-weight:700; margin-bottom:5px; margin-top:13px;">Franking credits held by the trust</p>
+              <p style="font-size:13px; color:#3a3030;">Where a trust holds shares and receives franked dividends, the trustee is expected to use those franking credits to pay the minimum tax first. What happens when franking credits exceed the minimum tax liability is still subject to consultation and has not yet been finalised.</p>
+            </div>
+            <div>
+              <div class="ex">
+                <div class="ex-tt">Example: Family Trust Distribution</div>
+                <p style="font-size:13px; margin-bottom:8px;">A family trust earns <strong>$200,000</strong>. The trustee splits it: $50,000 to each of 4 family members. Today, each pays tax at their own rate, say 19%, total family tax approx. $38,000.</p>
+                <p style="font-size:13px; margin-bottom:8px;">Under the proposed rules, the trustee pays <strong>30% on $200,000 = $60,000</strong>, regardless of how the income is split. Beneficiaries get a non-refundable credit for their share.</p>
+                <p style="font-size:13px;">If a beneficiary's personal tax rate is already 30% or above, their overall tax position is broadly unchanged.</p>
+              </div>
+
+              <p style="font-size:13px; font-weight:700; margin-bottom:5px; margin-top:13px;">Rollover relief</p>
+              <p style="font-size:13px; color:#3a3030;">3 years from 1 July 2027 to restructure out of a discretionary trust (e.g. into a company or fixed trust) without triggering CGT or income tax.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- end pkg-red -->
+
+
+  <!-- =====================
+       PACKAGE 2: PRODUCTIVITY (GREEN)
+  ===================== -->
+  <div class="pkg pkg-green">
+
+    <div class="sec-hd">
+      <div class="sec-ico ico-g">&#128640;</div>
+      <div>
+        <div class="sec-lbl">Package 2</div>
+        <div class="sec-ttl">Productivity and Business</div>
+      </div>
+    </div>
+    <div class="sec-div div-g"></div>
+
+    <div class="g2">
+
+      <!-- LOSS CARRY BACK -->
+      <div class="card">
+        <div class="card-bar bar-g"></div>
+        <div class="ctag tag-g">Companies &nbsp;|&nbsp; Proposed from 1 July 2026</div>
+        <div class="ctit">Loss Carry Back: Reintroduced Permanently</div>
+        <div class="cbod">
+          <p>A company with a tax loss this year is proposed to be able to claim a <strong>cash refund</strong> against corporate tax paid in the <strong>previous two income years</strong>.</p>
+          <ul class="cl">
+            <li class="yes">Companies with global turnover under <strong>$1 billion</strong></li>
+            <li class="yes">Revenue losses only (not capital losses)</li>
+            <li class="yes">Expected to benefit up to 85,000 companies</li>
+          </ul>
+          <div class="ex mt12">
+            <div class="ex-tt">Example</div>
+            <p style="font-size:13px;">A business paid $12,500 tax on a $50,000 profit in 2025-2026. In 2026-2027 it reports a $15,000 loss. It carries back the loss and receives a <strong>$3,750 refund</strong> ($15,000 x 25%) from prior year tax paid.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOSS REFUNDABILITY -->
+      <div class="card">
+        <div class="card-bar bar-g"></div>
+        <div class="ctag tag-g">Start-Ups &nbsp;|&nbsp; Proposed from 1 July 2028</div>
+        <div class="ctit">Loss Refundability for New Small Businesses</div>
+        <div class="cbod">
+          <p>New small businesses in their <strong>first 2 years</strong> are proposed to be able to convert tax losses into <strong>immediate cash refunds</strong>.</p>
+          <ul class="cl">
+            <li class="yes">Businesses with aggregated turnover up to <strong>$10 million</strong></li>
+            <li class="yes">Refund capped at: PAYG withholding + FBT paid to Australian employees that year</li>
+            <li class="yes">Expected to benefit approximately 25,000 companies per year</li>
+          </ul>
+          <div class="ex mt12">
+            <div class="ex-tt">Example: PAYG Cap</div>
+            <p style="font-size:13px;">A start-up remits <strong>$40,000 PAYG</strong> and <strong>$5,000 FBT</strong>. It reports a <strong>$200,000</strong> tax loss. The refund is capped at <strong>$45,000</strong> (PAYG + FBT). The remaining $155,000 loss carries forward as normal.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- INSTANT ASSET WRITE OFF -->
+      <div class="card">
+        <div class="card-bar bar-g"></div>
+        <div class="ctag tag-g">Small Business &nbsp;|&nbsp; Permanent from 1 July 2026</div>
+        <div class="ctit">$20,000 Instant Asset Write-Off: Made Permanent</div>
+        <div class="cbod">
+          <p>Small businesses are proposed to immediately deduct any eligible asset under <strong>$20,000</strong> in the year of purchase rather than depreciating over time.</p>
+          <ul class="cl">
+            <li class="yes">Businesses with aggregated turnover up to <strong>$10 million</strong></li>
+            <li class="yes">Per asset limit, each asset assessed individually</li>
+            <li class="yes">Expected $890 million cash flow improvement over 5 years</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- R&D -->
+      <div class="card">
+        <div class="card-bar bar-g"></div>
+        <div class="ctag tag-g">R&amp;D &nbsp;|&nbsp; Proposed from 1 July 2028</div>
+        <div class="ctit">R&amp;D Tax Incentive: Overhaul</div>
+        <div class="cbod">
+          <ul class="cl">
+            <li class="dot">Core R&D offset proposed to increase to approximately <strong>50%</strong> (from ~25%)</li>
+            <li class="dot">Refundable offset threshold raised to <strong>$50 million</strong> turnover (for firms under 10 years old)</li>
+            <li class="dot">Annual expenditure cap raised to <strong>$200 million</strong></li>
+            <li class="dot">Intensity threshold reduced to 1.5%, broadening eligibility</li>
+            <li class="dot">Minimum expenditure of $50,000 required</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- EV FBT -->
+      <div class="card">
+        <div class="card-bar bar-g"></div>
+        <div class="ctag tag-g">Electric Vehicles &nbsp;|&nbsp; Phased from 1 April 2027</div>
+        <div class="ctit">EV FBT: Three-Stage Transition</div>
+        <div class="cbod">
+          <ul class="cl">
+            <li class="yes">EVs under <strong>$75,000</strong>: full FBT exemption continues, provided the arrangement commences before 1 April 2029</li>
+            <li class="dot">From <strong>1 April 2027</strong>: EVs over $75,000 move to a 25% FBT discount</li>
+            <li class="dot">From <strong>1 April 2029</strong>: all eligible EVs move to the 25% FBT discount (full exemption ends)</li>
+          </ul>
+          <div class="ex mt12">
+            <div class="ex-tt">Example</div>
+            <p style="font-size:13px;">Employer provides an EV under $75,000 via novated lease starting before 1 April 2029. The arrangement retains the <strong>full FBT exemption</strong> until 1 April 2029, then a 25% discount on the taxable value is expected to apply.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- VC + RED TAPE -->
+      <div class="card">
+        <div class="card-bar bar-g"></div>
+        <div class="ctag tag-g">Investment and Regulatory Reform</div>
+        <div class="ctit">Venture Capital and Red Tape Reduction</div>
+        <div class="cbod">
+          <ul class="cl">
+            <li class="dot">VC incentives (ESVCLP and VCLP) proposed to expand from <strong>1 July 2027</strong></li>
+            <li class="dot">497 tariffs abolished from <strong>1 July 2026</strong>, saving businesses est. $157 million per year</li>
+            <li class="dot">Financial sector compliance costs expected to reduce by $780 million per year via 14 legislative reforms</li>
+            <li class="dot">Optional monthly PAYG instalments from <strong>1 July 2027</strong></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- end pkg-green -->
+
+
+  <!-- =====================
+       PACKAGE 3: SAVINGS (BLUE)
+  ===================== -->
+  <div class="pkg pkg-blue">
+
+    <div class="sec-hd">
+      <div class="sec-ico ico-b">&#127963;</div>
+      <div>
+        <div class="sec-lbl">Package 3</div>
+        <div class="sec-ttl">Savings and Stability</div>
+      </div>
+    </div>
+    <div class="sec-div div-b"></div>
+
+    <div class="sav">
+      <div>
+        <div class="sav-tt">NDIS Reform</div>
+        <div class="sav-bod">$37.8 billion in savings over the next 4 years. The Government describes these as necessary to keep the scheme sustainable long-term.</div>
+      </div>
+      <div>
+        <div class="sav-tt">Fuel and Energy Security</div>
+        <div class="sav-bod">$14.8 billion plan including a permanent Australian Fuel Security Reserve. From 1 July 2027, LNG exporters expected to reserve 20% of export volumes for the domestic market.</div>
+      </div>
+    </div>
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-bar bar-b"></div>
+        <div class="ctag tag-b">Foreign Investment</div>
+        <div class="ctit">Foreign Residential Property Ban Extended to 2029</div>
+        <div class="cbod">
+          <p>The ban on foreign investors purchasing <strong>established</strong> residential properties is proposed to be extended to <strong>2029</strong>. New builds remain open to foreign investment.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-bar bar-b"></div>
+        <div class="ctag tag-b">Skills and Housing</div>
+        <div class="ctit">Workforce and Housing Supply Measures</div>
+        <div class="cbod">
+          <ul class="cl">
+            <li class="dot">$85.2 million to fast-track skills assessments for migrant trades workers</li>
+            <li class="dot">Last-mile infrastructure funding to unlock up to <strong>65,000 new homes</strong></li>
+            <li class="dot">Free access to building standards referenced in Australian legislation</li>
+            <li class="dot">Free TAFE training to support construction workforce supply</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end pkg-blue -->
+
+
+  <!-- =====================
+       KEY DATES
+  ===================== -->
+  <div class="sec-dates">
+    <div class="sec-hd">
+      <div class="sec-ico ico-go">&#128197;</div>
+      <div>
+        <div class="sec-lbl">Reference</div>
+        <div class="sec-ttl">Key Dates and Implementation Timeline</div>
+      </div>
+    </div>
+    <div class="sec-div div-go"></div>
+    <div class="card">
+      <table class="tltab">
+        <thead>
+          <tr>
+            <th>Target Date</th>
+            <th>Proposed Measure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="dt">7:30pm AEST<br>12 May 2026</td>
+            <td>Negative gearing grandfathering cut-off. Properties contracted at or before this time are proposed to be grandfathered under current rules.</td>
+          </tr>
+          <tr>
+            <td class="dt">1 July 2026</td>
+            <td>Loss carry back reintroduced. $20,000 instant asset write-off made permanent. 497 tariffs abolished. $1,000 instant work expense deduction for individuals.</td>
+          </tr>
+          <tr>
+            <td class="dt">1 April 2027</td>
+            <td>EV FBT: EVs over $75,000 proposed to move to 25% FBT discount.</td>
+          </tr>
+          <tr>
+            <td class="dt">1 July 2027</td>
+            <td>CGT indexation proposed to replace 50% discount. 30% minimum CGT tax. Negative gearing restricted to new builds. Trust 3-year rollover relief opens. VC incentives expanded. Optional monthly PAYG instalments. Domestic gas reservation begins.</td>
+          </tr>
+          <tr>
+            <td class="dt">2027-2028<br>Income Year</td>
+            <td>$250 Working Australians Tax Offset (WATO) for 13.3 million workers.</td>
+          </tr>
+          <tr>
+            <td class="dt">1 July 2028</td>
+            <td>30% minimum tax on discretionary trust distributions. R&D Tax Incentive overhaul.</td>
+          </tr>
+          <tr>
+            <td class="dt">2028-2029<br>Income Year</td>
+            <td>Loss refundability for new start-up businesses (first 2 years).</td>
+          </tr>
+          <tr>
+            <td class="dt">1 April 2029</td>
+            <td>All eligible EVs proposed to move to 25% FBT discount. Full FBT exemption ends for all EVs.</td>
+          </tr>
+          <tr>
+            <td class="dt">30 June 2030</td>
+            <td>Trust 3-year rollover relief period closes.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disc">
+    <div class="disc-badge">NOT FINANCIAL ADVICE</div>
+    <strong>For Internal Information Purposes Only</strong><br><br>
+    This summary is prepared for internal information purposes based on announcements made at 7:30pm AEST on 12 May 2026, together with publicly available sources including the Australian Government Budget Papers 2026-2027 (budget.gov.au), Budget Factsheets issued 12 May 2026, the ATO (ato.gov.au), CPA Australia, and CA ANZ.<br><br>
+    <strong>This document does not constitute financial, tax, legal or accounting advice.</strong> All measures are <em>proposals only</em> and subject to legislation. Each measure must be drafted, introduced to Parliament, and passed before it becomes law. Details may change through the legislative and consultation process. Further information will become available as legislation progresses.<br><br>
+    Individual circumstances vary. Please consult a registered tax agent, licensed financial adviser, or legal practitioner before taking any action in reliance on these proposed changes.
+  </div>
+
+</div><!-- end main -->
+
+<!-- FOOTER -->
+<div class="ftr">
+  <span class="ftr-badge">Not Financial Advice</span>
+  <strong>Sources:</strong> Australian Government Budget Papers 2026-2027 (budget.gov.au) &nbsp;|&nbsp; ATO (ato.gov.au) &nbsp;|&nbsp; CPA Australia Federal Budget 2026-2027 Analysis &nbsp;|&nbsp; CA ANZ Budget Overview<br>
+  Budget Factsheets: Negative Gearing and CGT Reform &nbsp;|&nbsp; Minimum Tax on Discretionary Trusts (budget.gov.au, 12 May 2026)<br>
+  For internal information purposes only &nbsp;|&nbsp; May 2026
+</div>
+
+</body>
+</html>
