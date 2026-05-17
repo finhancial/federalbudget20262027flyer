@@ -37,7 +37,8 @@
   .hdr-eye { font-size: 10.5px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 11px; }
   .hdr-title { font-family: 'Playfair Display', serif; font-size: 50px; font-weight: 900; line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 8px; }
   .hdr-title span { color: rgba(255,255,255,0.65); }
-  .hdr-sub { font-size: 15px; color: rgba(255,255,255,0.78); font-weight: 300; max-width: 520px; margin-bottom: 22px; font-style: italic; }
+  .hdr-left { flex: 1; min-width: 0; }
+  .hdr-sub { font-size: 15px; color: rgba(255,255,255,0.78); font-weight: 300; margin-bottom: 22px; font-style: italic; white-space: nowrap; }
   .hdr-stamp { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.22); border-radius: 6px; padding: 7px 16px; font-family: 'DM Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.88); letter-spacing: 0.02em; width: fit-content; }
 
   /* INTRO */
@@ -178,10 +179,10 @@
 <div class="hdr">
   <div class="hdr-inner">
     <div class="hdr-top">
-      <div>
+      <div class="hdr-left">
         <div class="hdr-eye">Internal Information Brief</div>
         <div class="hdr-title">Federal Budget<br><span>2026-2027</span></div>
-        <div class="hdr-sub">A plain-English summary of the key proposed changes announced in the 2026-2027 Federal Budget.</div>
+        <div class="hdr-sub">A plain-English summary of the key proposed changes announced in the 2026-2027 Federal Budget</div>
         <div class="hdr-stamp">&#128197;&nbsp; Delivered 7:30pm AEST &nbsp;|&nbsp; Tuesday 12 May 2026 &nbsp;|&nbsp; Treasurer Jim Chalmers</div>
       </div>
       <div class="hdr-notadvice">Not Financial Advice</div>
@@ -246,7 +247,7 @@
           <ul class="cl">
             <li class="yes">New residential builds: choice of 50% discount or new indexation method on sale</li>
             <li class="yes">Main residence: CGT exemption fully retained</li>
-            <li class="yes">Four small business CGT concessions: retained and unchanged</li>
+            <li class="yes">Small Business Shield: 4 Small Business CGT Concessions remain unchanged (residual gain may be affected)</li>
             <li class="yes">Qualifying affordable housing: existing 60% CGT discount retained</li>
             <li class="yes">Income support recipients (Age Pension, JobSeeker): proposed to be exempt from the 30% minimum tax</li>
             <li class="yes">Super funds including SMSFs: retain existing one-third discount, not affected</li>
@@ -340,7 +341,7 @@
 
           <div class="g2 mt12">
             <div>
-              <p style="font-size:13px; font-weight:700; margin-bottom:7px;">Proposed exemptions (with some exceptions, including but not limited to)</p>
+              <p style="font-size:13px; font-weight:700; margin-bottom:7px;">Proposed exemptions (with some exceptions)</p>
               <ul class="cl">
                 <li class="yes">Primary production (farming) income</li>
                 <li class="yes">Fixed and widely held trusts</li>
@@ -349,21 +350,24 @@
               </ul>
 
               <p style="font-size:13px; font-weight:700; margin-bottom:5px; margin-top:13px;">Bucket companies</p>
-              <p style="font-size:13px; color:#3a3030;">Corporate beneficiaries (bucket companies) would not receive credits for trustee-level tax, removing the ability to convert those into refundable franking credits.</p>
+              <p style="font-size:13px; color:#3a3030;">Corporate beneficiaries would not receive credits for trustee-level tax, removing the ability to convert those into refundable franking credits.</p>
 
               <p style="font-size:13px; font-weight:700; margin-bottom:5px; margin-top:13px;">Franking credits held by the trust</p>
-              <p style="font-size:13px; color:#3a3030;">Where a trust holds shares and receives franked dividends, the trustee is expected to use those franking credits to pay the minimum tax first. What happens when franking credits exceed the minimum tax liability is still subject to consultation and has not yet been finalised.</p>
+              <p style="font-size:13px; color:#3a3030;">Where a trust receives franked dividends, franking credits are expected to be applied against the minimum tax first. Treatment of any excess credits remains subject to consultation.</p>
+
+              <p style="font-size:13px; font-weight:700; margin-bottom:5px; margin-top:13px;">Rollover relief</p>
+              <p style="font-size:13px; color:#3a3030;">3 years from 1 July 2027 to restructure out of a discretionary trust (e.g. into a company or fixed trust) without triggering CGT or income tax.</p>
             </div>
             <div>
               <div class="ex">
                 <div class="ex-tt">Example: Family Trust Distribution</div>
-                <p style="font-size:13px; margin-bottom:8px;">A family trust earns <strong>$200,000</strong>. The trustee splits it: $50,000 to each of 4 family members. Today, each pays tax at their own rate, say 19%, total family tax approx. $38,000.</p>
-                <p style="font-size:13px; margin-bottom:8px;">Under the proposed rules, the trustee pays <strong>30% on $200,000 = $60,000</strong>, regardless of how the income is split. Beneficiaries get a non-refundable credit for their share.</p>
-                <p style="font-size:13px;">If a beneficiary's personal tax rate is already 30% or above, their overall tax position is broadly unchanged.</p>
+                <p style="font-size:13px; margin-bottom:8px;">A family trust earns <strong>$140,000</strong>. The trustee distributes: Parent A $100,000 (high income earner), Adult Child $40,000 (no other income). Under the proposed rules, the trustee pays <strong>30% on $140,000 = $42,000</strong> upfront, regardless of how the income is split.</p>
+                <ul class="cl" style="margin-top:4px;">
+                  <li class="yes">Parent A: personal rate already exceeds 30% (total income $250,000, marginal rate 45%), tax position broadly unchanged.</li>
+                  <li class="no">Adult Child: would have paid $3,488 tax personally. Trustee paid $12,000 (30% of $40,000). The $8,512 excess credit is non-refundable and lost.</li>
+                </ul>
+                <p class="ex-note">Under the proposed rules, distributing to low-income beneficiaries no longer produces a tax saving. Any excess credit above the beneficiary's personal liability cannot be refunded.</p>
               </div>
-
-              <p style="font-size:13px; font-weight:700; margin-bottom:5px; margin-top:13px;">Rollover relief</p>
-              <p style="font-size:13px; color:#3a3030;">3 years from 1 July 2027 to restructure out of a discretionary trust (e.g. into a company or fixed trust) without triggering CGT or income tax.</p>
             </div>
           </div>
         </div>
@@ -399,6 +403,7 @@
           <ul class="cl">
             <li class="yes">Companies with global turnover under <strong>$1 billion</strong></li>
             <li class="yes">Revenue losses only (not capital losses)</li>
+            <li class="yes">Refund capped at: closing franking account balance to prevent double-dipping on franked dividends</li>
             <li class="yes">Expected to benefit up to 85,000 companies</li>
           </ul>
           <div class="ex mt12">
